@@ -11,8 +11,8 @@ app.use(koaBody({
     multipart: true
 }));
 app.use(cors())
-app.use(router.routes());
 app.use(router.allowedMethods());
+app.use(router.routes());
 
 
 app.listen(port, (ctx, next) => {

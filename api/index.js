@@ -17,7 +17,7 @@ exports.getPosts = (ctx) => new Promise((resolve, reject) => {
       const sortedData = database.posts.filter((post) => post.id === Number(id))
       const result = {
         status: 'ok',
-        data: JSON.stringify(sortedData),
+        data: sortedData,
       };
       resolve(result);
     } catch (err) {
@@ -48,6 +48,22 @@ exports.getPosts = (ctx) => new Promise((resolve, reject) => {
       const result = {
         status: 'ok',
         data: postComments,
+      };
+      resolve(result);
+    } catch (err) {
+      reject(err);
+    }
+  });
+
+  exports.getPostsLastest = (ctx) => new Promise((resolve, reject) => {
+    try {
+      let sortedData = database.posts.sort((a, b) => new Date(a.created) - new Date(b.created));
+      if (sortedData.length >= 10) {
+        sortedData = sortedData.slice(-10);
+      }
+      const result = {
+        status: 'ok',
+        data: sortedData,
       };
       resolve(result);
     } catch (err) {

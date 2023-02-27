@@ -75,7 +75,7 @@ class Database {
 
 const db = new Database();
 db.generateUsers(10);
-db.generatePosts(10);
+db.generatePosts(30);
 db.generateComments(20);
 
 module.exports = db;

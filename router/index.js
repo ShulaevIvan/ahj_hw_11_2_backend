@@ -8,8 +8,13 @@ router.get('/', async (ctx, next) => {
     ctx.response.status = 200;
 });
 
-router.get('/posts', async (ctx, next) => {
+router.get('/posts/', async (ctx, next) => {
     ctx.response.body = await api.getPosts();
+    ctx.response.status = 200;
+});
+
+router.get('/posts/lastest', async (ctx, next) => {
+    ctx.response.body = await api.getPostsLastest();
     ctx.response.status = 200;
 });
 
@@ -30,6 +35,7 @@ router.get('/posts/:id/comments/lastest', async (ctx, next) => {
     ctx.response.body = await api.getCommentsLastest(id);
     ctx.response.status = 200;
 });
+
 
 
 
